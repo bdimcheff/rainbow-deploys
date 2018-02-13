@@ -50,7 +50,7 @@ func main() {
 	fmt.Printf("Booted with color: #%s", color)
 	fmt.Println()
 
-	serveTCP()
+	go serveTCP()
 
 	http.HandleFunc("/", httpHandler)
 	fmt.Println("listening with http on :8080 and tcp on :8081")
