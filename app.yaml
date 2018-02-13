@@ -6,6 +6,7 @@ spec:
   type: NodePort
   selector:
     app: rainbow-deploys
+    # this is the key here - it allows us to match only pods of the currently active color
     color: __COLOR__
   ports:
   - protocol: TCP

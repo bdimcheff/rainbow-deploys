@@ -18,4 +18,4 @@ push: image
 
 .PHONY: install
 install:
-	cat *.yaml | sed s/__COLOR__/$(COLOR)/g | kubectl apply -f -
+	cat app.yaml | sed s/__COLOR__/$(COLOR)/g | kubectl apply -f -
