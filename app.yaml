@@ -10,9 +10,11 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
+    nodePort: 31080
     name: http
   - protocol: TCP
     port: 8081
+    nodePort: 31081
     name: tcp
 ---
 apiVersion: apps/v1
@@ -35,6 +37,7 @@ spec:
       containers:
       - name: rainbow-deploy
         image: bdimcheff/rainbow-deploys:__COLOR__
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         - containerPort: 8081
