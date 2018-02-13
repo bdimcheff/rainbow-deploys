@@ -2,12 +2,37 @@ package main
 
 import (
 	"fmt"
+	"net"
 	"net/http"
 	"os"
+	"time"
 )
 
 func getColor() string {
 	return os.Getenv("COLOR")
+}
+
+func tcpHandler(c net.Conn) {
+	for {
+		c.Write([]byte(fmt.Sprintf("The color is #%s", getColor())))
+		c.Write([]byte(fmt.Sprintln()))
+		time.Sleep(5 * time.Second)
+
+	}
+}
+
+func serveTcp() {
+	ln, err := net.Listen("tcp", ":8081")
+	if err != nil {
+		// handle error but not today
+	}
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			// handle error but not today
+		}
+		go tcpHandler(conn)
+	}
 }
 
 func colorHandler(w http.ResponseWriter, r *http.Request) {
@@ -25,8 +50,9 @@ func main() {
 	fmt.Printf("Booted with color: #%s", color)
 	fmt.Println()
 
-	http.HandleFunc("/", colorHandler)
+	serveTcp()
 
-	fmt.Println("listening on :8080")
+	http.HandleFunc("/", colorHandler)
+	fmt.Println("listening with http on :8080 and tcp on :8081")
 	http.ListenAndServe(":8080", nil)
 }
