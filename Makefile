@@ -15,3 +15,7 @@ image:
 .PHONY: push
 push: image
 	docker push $(DOCKER_IMAGE):$(COLOR)
+
+.PHONY: install
+install:
+	cat *.yaml | sed s/__COLOR__/$(COLOR)/g | kubectl apply -f -
