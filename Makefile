@@ -10,7 +10,7 @@ rainbow-deploys: main.go
 .PHONY: image
 image:
 	@echo Building with color $(COLOR)
-	docker build . -t $(DOCKER_IMAGE):$(COLOR) --build-arg COLOR=$(COLOR)
+	COLOR=$(COLOR) docker build . -t $(DOCKER_IMAGE):$(COLOR) --build-arg COLOR=$(COLOR)
 
 .PHONY: push
 push: image
