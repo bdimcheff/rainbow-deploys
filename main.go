@@ -21,7 +21,7 @@ func tcpHandler(c net.Conn) {
 	}
 }
 
-func serveTcp() {
+func serveTCP() {
 	ln, err := net.Listen("tcp", ":8081")
 	if err != nil {
 		// handle error but not today
@@ -35,7 +35,7 @@ func serveTcp() {
 	}
 }
 
-func colorHandler(w http.ResponseWriter, r *http.Request) {
+func httpHandler(w http.ResponseWriter, r *http.Request) {
 	color := getColor()
 
 	fmt.Printf("Serving color: #%s", color)
@@ -50,9 +50,9 @@ func main() {
 	fmt.Printf("Booted with color: #%s", color)
 	fmt.Println()
 
-	serveTcp()
+	serveTCP()
 
-	http.HandleFunc("/", colorHandler)
+	http.HandleFunc("/", httpHandler)
 	fmt.Println("listening with http on :8080 and tcp on :8081")
 	http.ListenAndServe(":8080", nil)
 }
