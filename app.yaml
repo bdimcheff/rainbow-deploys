@@ -38,7 +38,6 @@ spec:
       containers:
       - name: rainbow-deploy
         image: bdimcheff/rainbow-deploys:__COLOR__
-        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         - containerPort: 8081
