@@ -10,6 +10,10 @@ Rainbow deploys are like [Blue/Green](https://martinfowler.com/bliki/BlueGreenDe
 
 In an ideal world, everybody runs stateless services that have short request/response cycles.  In the real world, sometimes you need long-running connections and state.  You may not wish to just restart your backends if they have established connections for a variety of reasons.  See my blog post on the topic for more info about why you might want to do this.
 
+## TL;DR
+
+You can drain stuff by changing a Service's selector but leaving the Deployment alone.  Instead of changing a Deployment and doing a rolling update, create a new deployment and repoint the Service.  Existing connections will remain until you delete the underlying Deployment.
+
 ## Prerequisites
 
 1. minikube (or another kubernetes)
