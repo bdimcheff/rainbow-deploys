@@ -8,7 +8,7 @@ Rainbow deploys are like [Blue/Green](https://martinfowler.com/bliki/BlueGreenDe
 
 ## Why?
 
-In an ideal world, everybody runs stateless services that have short request/response cycles.  In the real world, sometimes you need long-running connections and state.  You may not wish to just restart your backends if they have established connections for a variety of reasons.  See my blog post on the topic for more info about why you might want to do this.
+In an ideal world, everybody runs stateless services that have short request/response cycles.  In the real world, sometimes you need long-running connections and state.  You may not wish to just restart your backends if they have established connections for a variety of reasons.  See my [blog post](http://brandon.dimcheff.com/2018/02/rainbow-deploys-with-kubernetes/) on the topic for more info about why you might want to do this.
 
 ## TL;DR
 
